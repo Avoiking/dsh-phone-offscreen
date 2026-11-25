@@ -4,6 +4,9 @@
 
 **把 Android app 放进一块看不见的屏里操作——手机屏幕上正在发生的事，一行都不会被打断。**
 
+> **`bg` 是 background（后台）**，指「后台屏」，不是「背景图」。`phone-bg` 读作
+> *手机 → 后台那块屏*；所有工具名沿用同一个词根：`phone_bg_start`、`phone_bg_tap`、`phone_bg_shot`……
+
 生态里现有的手机插件（dsh-phone-control / dsh-mobile-use / dsh-android-tool）都是「把手机镜像进
 DSH，然后点主屏」：镜像只是让你看见，点击永远落在设备**当前前台**那个窗口上。用户正在用的东西
 必然被顶走。

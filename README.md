@@ -4,6 +4,10 @@
 
 **Operate Android apps on a hidden virtual display — whatever is on the phone's own screen never moves.**
 
+> **`bg` = background** (as in foreground/background display), not "background image".
+> `phone-bg` reads as *phone → background display*, and every tool keeps that root:
+> `phone_bg_start`, `phone_bg_tap`, `phone_bg_shot`, …
+
 Existing phone plugins for DSH (dsh-phone-control / dsh-mobile-use / dsh-android-tool) mirror the device
 into DSH and then tap the *main* display: the mirror is only for viewing, and every tap lands on whatever
 window currently has focus, so the user gets interrupted.
