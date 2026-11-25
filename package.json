@@ -1,6 +1,6 @@
 {
   "name": "dsh-phone-bg",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Do-not-disturb mode for a real Android phone: operate apps on a hidden virtual display so the phone's own screen is never touched.",
   "keywords": [
     "dsh",
