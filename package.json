@@ -1,6 +1,6 @@
 {
   "name": "dsh-phone-bg",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Do-not-disturb mode for a real Android phone: operate apps on a hidden virtual display so the phone's own screen is never touched.",
   "keywords": [
     "dsh",
@@ -35,5 +35,14 @@
   },
   "engines": {
     "node": ">=20"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Avoiking/dsh-phone-bg.git"
+  },
+  "homepage": "https://github.com/Avoiking/dsh-phone-bg#readme",
+  "bugs": {
+    "url": "https://github.com/Avoiking/dsh-phone-bg/issues"
+  },
+  "author": "Avoiking"
 }
