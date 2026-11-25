@@ -53,4 +53,16 @@ force-stopped and the previous foreground activity is restored, then the tool re
 - Non-resizable apps can't be hosted; the tool says so instead of hijacking the foreground.
 - Same user data and logins as the main screen — this is not a second phone.
 
-MIT.
+## Versioning
+
+Stays in `0.x` on purpose. The tool names, the parameter shape and the on-phone command protocol are
+still allowed to change while real devices surface edge cases (non-resizable apps, OEM quirks, Android
+revisions). Inside `0.x`: a **patch** release never changes a tool signature, a **minor** release may.
+
+`1.0.0` is earned, not scheduled — it happens once the plugin has survived a full minor cycle on a
+range of devices with no open correctness bugs.
+
+## License
+
+Apache-2.0 — see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE). Compared with MIT it adds an explicit
+patent grant (section 3), which is worth having for anything that drives real devices.

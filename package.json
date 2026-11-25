@@ -12,7 +12,7 @@
     "do-not-disturb",
     "phone-automation"
   ],
-  "license": "MIT",
+  "license": "Apache-2.0",
   "type": "module",
   "main": "./src/index.js",
   "exports": {
@@ -26,7 +26,8 @@
     "dsh.plugin.json",
     "README.md",
     "README.zh.md",
-    "LICENSE"
+    "LICENSE",
+    "NOTICE"
   ],
   "dsh": {
     "bundle": {
