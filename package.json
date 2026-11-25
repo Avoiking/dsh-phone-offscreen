@@ -1,6 +1,6 @@
 {
   "name": "dsh-phone-offscreen",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Do-not-disturb mode for a real Android phone: run apps on a hidden virtual display (offscreen) so the phone's own screen is never touched.",
   "keywords": [
     "adb",
