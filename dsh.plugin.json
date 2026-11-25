@@ -1,9 +1,11 @@
 {
-  "name": "dsh-phone-bg",
+  "name": "dsh-phone-offscreen",
   "description": "Control Android apps on a hidden virtual display; the physical screen is never touched.",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "entry": {
-    "name": "dsh-phone-bg",
-    "inject": ["tools"]
+    "name": "dsh-phone-offscreen",
+    "inject": [
+      "tools"
+    ]
   }
 }

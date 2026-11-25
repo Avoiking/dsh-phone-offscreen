@@ -1,16 +1,17 @@
 {
-  "name": "dsh-phone-bg",
+  "name": "dsh-phone-offscreen",
   "version": "0.2.0",
-  "description": "Do-not-disturb mode for a real Android phone: operate apps on a hidden virtual display so the phone's own screen is never touched.",
+  "description": "Do-not-disturb mode for a real Android phone: run apps on a hidden virtual display (offscreen) so the phone's own screen is never touched.",
   "keywords": [
+    "adb",
+    "android",
+    "deepseek-harness",
+    "do-not-disturb",
     "dsh",
     "dsh-plugin",
-    "deepseek-harness",
-    "android",
-    "adb",
-    "virtual-display",
-    "do-not-disturb",
-    "phone-automation"
+    "offscreen",
+    "phone-automation",
+    "virtual-display"
   ],
   "license": "Apache-2.0",
   "type": "module",
@@ -39,11 +40,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Avoiking/dsh-phone-bg.git"
+    "url": "git+https://github.com/Avoiking/dsh-phone-offscreen.git"
   },
-  "homepage": "https://github.com/Avoiking/dsh-phone-bg#readme",
+  "homepage": "https://github.com/Avoiking/dsh-phone-offscreen#readme",
   "bugs": {
-    "url": "https://github.com/Avoiking/dsh-phone-bg/issues"
+    "url": "https://github.com/Avoiking/dsh-phone-offscreen/issues"
   },
   "author": "Avoiking"
 }

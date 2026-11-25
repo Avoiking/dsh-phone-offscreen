@@ -2,7 +2,7 @@
  * adb.js —— 和手机说话的那一层。
  *
  * 设计约束（都是踩出来的）：
- * - **只用 adb，不需要 root、不需要无障碍服务**。手机侧跑的是 `bg.Shell`（app_process + shell 身份）。
+ * - **只用 adb，不需要 root、不需要无障碍服务**。手机侧跑的是 `offscreen.Shell`（app_process + shell 身份）。
  * - **截图走 ImageReader，不走 screencap**：`screencap -d <虚拟屏>` 在 Android 16 上直接报
  *   "Display Id is not valid"，它只认物理 display。
  * - **命令通道走文件**：shell 身份 bind 端口容易被 SELinux 卡，写 /data/local/tmp 永远可行。
@@ -14,10 +14,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const DEX_ASSET = path.join(HERE, '..', 'assets', 'phone-bg.dex');
+const DEX_ASSET = path.join(HERE, '..', 'assets', 'phone-offscreen.dex');
 
-const REMOTE_DIR = '/data/local/tmp/phone-bg';
-const REMOTE_DEX = `${REMOTE_DIR}/phone-bg.dex`;
+const REMOTE_DIR = '/data/local/tmp/phone-offscreen';
+const REMOTE_DEX = `${REMOTE_DIR}/phone-offscreen.dex`;
 
 /** adb 可执行文件：优先 env.ADB，其次 PATH 里的 adb。 */
 const ADB = process.env.ADB || 'adb';
@@ -70,7 +70,7 @@ async function waitFor(fn, { tries = 60, delay = 150 } = {}) {
 
 /** 守护进程活着吗（进程 + display.info 都在才算）。 */
 export async function daemonAlive(serial) {
-  const pid = (await sh(serial, "pgrep -f 'bg.Shell'")).trim();
+  const pid = (await sh(serial, "pgrep -f 'offscreen.Shell'")).trim();
   if (!pid) return false;
   const info = await readRemote(serial, 'display.info');
   return /DISPLAY_ID=\d+/.test(info);
@@ -97,7 +97,7 @@ export async function ensureDaemon(serial, { size, dpi } = {}) {
   await run(['push', DEX_ASSET, REMOTE_DEX], { serial });
   await sh(serial, `rm -f ${REMOTE_DIR}/display.info ${REMOTE_DIR}/cmd ${REMOTE_DIR}/out`);
   await sh(serial,
-    `cd ${REMOTE_DIR} && (CLASSPATH=${REMOTE_DEX} setsid app_process /system/bin bg.Shell `
+    `cd ${REMOTE_DIR} && (CLASSPATH=${REMOTE_DEX} setsid app_process /system/bin offscreen.Shell `
     + `--size=${finalSize} --dpi=${finalDpi} > ${REMOTE_DIR}/shell.log 2>&1 < /dev/null &)`);
 
   const id = await waitFor(async () => (await daemonAlive(serial)) ? getDisplayId(serial) : null);

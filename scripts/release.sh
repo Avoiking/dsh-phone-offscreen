@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# release.sh —— dsh-phone-bg 一条命令发版
+# release.sh —— dsh-phone-offscreen 一条命令发版
 #
 # 用法：
 #   ./scripts/release.sh patch          # 0.1.1 → 0.1.2（修 bug）
@@ -22,7 +22,7 @@
 
 set -euo pipefail
 
-REPO_SLUG="Avoiking/dsh-phone-bg"
+REPO_SLUG="Avoiking/dsh-phone-offscreen"
 PROXY="http://127.0.0.1:7890"
 NPM_TOKEN_FILE="${HOME}/.dsh/tokens/npm-granular.token"
 GH_TOKEN_FILE="${HOME}/.dsh/tokens/github.token"
@@ -107,16 +107,16 @@ fi
 # ── 6. 等 registry 真正生效 ──────────────────────────────────
 say "等 registry 生效（npm 有几分钟处理延迟）"
 for i in $(seq 1 24); do
-  LIVE="$(curl -s "https://registry.npmjs.org/dsh-phone-bg/$NEW_VERSION" \
+  LIVE="$(curl -s "https://registry.npmjs.org/dsh-phone-offscreen/$NEW_VERSION" \
     | python3 -c 'import json,sys;print(json.load(sys.stdin).get("version",""))' 2>/dev/null || true)"
   if [[ "$LIVE" == "$NEW_VERSION" ]]; then
-    TAG="$(curl -s https://registry.npmjs.org/dsh-phone-bg \
+    TAG="$(curl -s https://registry.npmjs.org/dsh-phone-offscreen \
       | python3 -c 'import json,sys;print(json.load(sys.stdin).get("dist-tags",{}).get("latest",""))' 2>/dev/null || true)"
     say "已上线：npm $NEW_VERSION（latest=$TAG）"
-    echo "  https://www.npmjs.com/package/dsh-phone-bg/v/$NEW_VERSION"
+    echo "  https://www.npmjs.com/package/dsh-phone-offscreen/v/$NEW_VERSION"
     echo "  https://github.com/${REPO_SLUG}/releases/tag/v$NEW_VERSION"
     exit 0
   fi
   sleep 10
 done
-die "npm 四分钟还没挂上新版本，去网页确认：https://www.npmjs.com/package/dsh-phone-bg"
+die "npm 四分钟还没挂上新版本，去网页确认：https://www.npmjs.com/package/dsh-phone-offscreen"
